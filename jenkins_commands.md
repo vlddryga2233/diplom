@@ -1,0 +1,15 @@
+gcloud compute instances create jenkins-server \
+--project=studied-radar-341118 \
+--zone=us-central1-c \
+--machine-type=e2-standard-2 \
+--network-interface=network-tier=PREMIUM,subnet=default \
+--maintenance-policy=MIGRATE \
+--provisioning-model=STANDARD \
+--service-account=754341077628-compute@developer.gserviceaccount.com \
+--scopes=https://www.googleapis.com/auth/cloud-platform \
+--tags=http-server,https-server \
+--create-disk=auto-delete=yes,boot=yes,device-name=jenkins-server,image=projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20220419,mode=rw,size=60,type=projects/studied-radar-341118/zones/us-central1-c/diskTypes/pd-ssd \
+--no-shielded-secure-boot \
+--shielded-vtpm \
+--shielded-integrity-monitoring \
+--reservation-affinity=any
