@@ -18,8 +18,13 @@ pipeline {
                 expression { params.Terraform == 'apply' }
             }
             steps {
+                sh 'cd terraform/'
                 sh 'terraform init'
                 sh 'terraform apply --auto-approve'
+            }
+            post {
+                sh 'echo Success'
+                sh 'cd ..'
             }
         }
         stage('Destroy Terraform') {
@@ -28,8 +33,13 @@ pipeline {
                 expression { params.Terraform == 'destroy' }
             }
             steps {
+                sh 'cd terraform/'
                 sh 'terraform init'
                 sh 'terraform destroy --auto-approve'
+            }
+            post {
+                sh 'echo Success'
+                sh 'cd ..'
             }
         }
         stage('Wait 60 sec') {
@@ -43,7 +53,8 @@ pipeline {
                 expression { params.Ansible == 'apply' }
             }
             steps {
-                sh 'ansible-playbook ./ansible/main.yml'
+                sh 'cd ansible/'
+                sh 'ansible-playbook main.yml'
             }
         }
     }
