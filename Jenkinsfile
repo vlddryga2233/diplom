@@ -18,8 +18,8 @@ pipeline {
                 expression { params.Terraform == 'apply' }
             }
             steps {
-                sh 'terrafomr init'
-                sh 'terrafomr apply --auto-approve'
+                sh 'terraform init'
+                sh 'terraform apply --auto-approve'
             }
         }
         stage('Destroy Terraform') {
@@ -28,8 +28,8 @@ pipeline {
                 expression { params.Terraform == 'destroy' }
             }
             steps {
-                sh 'terrafomr init'
-                sh 'terrafomr destroy --auto-approve'
+                sh 'terraform init'
+                sh 'terraform destroy --auto-approve'
             }
         }
         stage('Wait 60 sec') {
