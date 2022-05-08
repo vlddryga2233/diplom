@@ -24,8 +24,11 @@
   #- name: Install lsof (for better process management)
   #  apt: name=lsof state=latest
   #  sudo: yes
-
-  - name: Install pip
+  - name: Install python3
+    apt: 
+       name: python3
+       state: latest
+  - name: Install pip3
     apt: 
        name: python3-pip 
        state: latest
