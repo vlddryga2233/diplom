@@ -18,7 +18,9 @@ pipeline {
                 expression { params.Terraform == 'apply' }
             }
             steps {
+                sh 'ls -la'
                 sh 'cd terraform/'
+                sh 'ls -la'
                 sh 'terraform init'
                 sh 'terraform apply --auto-approve'
             }
