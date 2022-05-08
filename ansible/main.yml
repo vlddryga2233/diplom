@@ -51,7 +51,9 @@
   #          creates="{{ PROJECT_HOME }}/venv/bin/activate"
 
   - name: Install Flask in the virtualenv
-    pip: name=python3-flask   #virtualenv="{{ PROJECT_HOME }}/venv" # virtualenv_site_packages=yes
+    apt: 
+       name: python3-flask   #virtualenv="{{ PROJECT_HOME }}/venv" # virtualenv_site_packages=yes
+       state: latest
 
   #- name: Get process id running the webserver
   #  shell: lsof -t -i:{{PORT}}    
