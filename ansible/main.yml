@@ -28,11 +28,12 @@
     apt: 
        name: python3
        state: latest
+
   - name: Install pip3
     apt: 
        name: python3-pip 
        state: latest
-    
+       update_cache: yes
 
   - name: Install virtualenv
     pip: 
