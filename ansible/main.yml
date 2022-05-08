@@ -46,7 +46,7 @@
 
   #- name: Create virtualenv for project
   #  shell: virtualenv "{{ PROJECT_HOME }}/venv"
-           creates="{{ PROJECT_HOME }}/venv/bin/activate"
+  #          creates="{{ PROJECT_HOME }}/venv/bin/activate"
 
   - name: Install Flask in the virtualenv
     pip: name=flask #virtualenv="{{ PROJECT_HOME }}/venv" # virtualenv_site_packages=yes
