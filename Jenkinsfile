@@ -18,16 +18,10 @@ pipeline {
                 expression { params.Terraform == 'apply' }
             }
             steps {
-                sh 'ls -la'
-                sh 'cd terraform/'
-                sh 'ls -la'
-                sh 'terraform init'
-                sh 'terraform apply --auto-approve'
-            }
-            post {
-                always {
-                    sh 'echo Success'
-                    sh 'cd ..'
+                dir("${env.WORKSPACE}/terraform") {
+                    sh "pwd"
+                    sh 'terraform init'
+                    sh 'terraform apply --auto-approve'
                 }
             }
         }
@@ -37,14 +31,10 @@ pipeline {
                 expression { params.Terraform == 'destroy' }
             }
             steps {
-                sh 'cd terraform/'
-                sh 'terraform init'
-                sh 'terraform destroy --auto-approve'
-            }
-            post {
-                always {
-                    sh 'echo Success'
-                    sh 'cd ..'
+                dir("${env.WORKSPACE}/terraform") {
+                    sh "pwd"
+                    sh 'terraform init'
+                    sh 'terraform apply --auto-approve'
                 }
             }
         }
@@ -59,7 +49,7 @@ pipeline {
                 expression { params.Ansible == 'apply' }
             }
             steps {
-                sh 'cd ansible/'
+                dir("${env.WORKSPACE}/ansible")
                 sh 'ansible-playbook main.yml'
             }
         }
