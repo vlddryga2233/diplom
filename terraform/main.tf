@@ -7,11 +7,11 @@ terraform {
   }
 }
 
-terraform {
-  backend "local" {
-    path = "/opt/ansible/inventory/terraform.tfstate"
-  }
-}
+#terraform {
+#  backend "local" {
+#    path = "/opt/ansible/inventory/terraform.tfstate"
+#  }
+#}
 
 
 provider "google" {
