@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: "git@github.com:Nortsx/jenkinsansiblebook.git", credentialsId: 'github_key' // здесь добавляем credentialsId и указываем наш ID.
+                git branch: 'main', url: "git@github.com:vlddryga2233/diplom.git", credentialsId: 'github_key' 
             }
         }
         stage('Deploy Terraform') {
@@ -35,6 +35,7 @@ pipeline {
             steps {
                 sh 'terrafomr destroy --auto-approve'
             }
+        }
         stage('Wait 60 sec') {
             steps {
                 sh 'sleep 1m'
