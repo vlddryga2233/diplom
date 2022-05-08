@@ -31,8 +31,10 @@
 
   - name : Install setup-tools
     apt:
-       name: python3-setuptools
+       name: setuptools
        state: latest
+       update_cache: yes
+
   - name: Install pip3
     apt: 
        name: python3-pip 
