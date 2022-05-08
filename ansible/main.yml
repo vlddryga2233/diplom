@@ -17,16 +17,16 @@
     with_fileglob:
      - "{{LOCAL_PROJECT_HOME}}/*"
 
-  - name: Install extra packages
-    yum: name=epel-release state=latest
-    sudo: yes
+  #- name: Install extra packages
+  #  apt: name=epel-release state=latest
+  #  sudo: yes
 
-  - name: Install lsof (for better process management)
-    yum: name=lsof state=latest
-    sudo: yes
+  #- name: Install lsof (for better process management)
+  #  apt: name=lsof state=latest
+  #  sudo: yes
 
   - name: Install pip
-    yum: name=python3-pip state=latest
+    apt: name=python3-pip state=latest
     sudo: yes
 
   - name: Install virtualenv
