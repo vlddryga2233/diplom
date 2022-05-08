@@ -26,12 +26,15 @@
   #  sudo: yes
 
   - name: Install pip
-    apt: name=python3-pip state=latest
-    sudo: yes
+    apt: 
+       name: python3-pip 
+       state: latest
+    
 
   - name: Install virtualenv
-    pip: name=virtualenv
-    sudo: yes
+    pip: 
+       name: virtualenv
+    
 
   - name: Create virtualenv for project
     shell: virtualenv "{{ PROJECT_HOME }}/venv"
