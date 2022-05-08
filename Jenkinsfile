@@ -23,8 +23,10 @@ pipeline {
                 sh 'terraform apply --auto-approve'
             }
             post {
-                sh 'echo Success'
-                sh 'cd ..'
+                always {
+                    sh 'echo Success'
+                    sh 'cd ..'
+                }
             }
         }
         stage('Destroy Terraform') {
@@ -38,8 +40,10 @@ pipeline {
                 sh 'terraform destroy --auto-approve'
             }
             post {
-                sh 'echo Success'
-                sh 'cd ..'
+                always {
+                    sh 'echo Success'
+                    sh 'cd ..'
+                }
             }
         }
         stage('Wait 60 sec') {
