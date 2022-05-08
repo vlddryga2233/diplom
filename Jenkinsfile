@@ -19,8 +19,6 @@ pipeline {
             }
             steps {
                 sh 'terrafomr init'
-            }
-            steps {
                 sh 'terrafomr apply --auto-approve'
             }
         }
@@ -31,8 +29,6 @@ pipeline {
             }
             steps {
                 sh 'terrafomr init'
-            }
-            steps {
                 sh 'terrafomr destroy --auto-approve'
             }
         }
