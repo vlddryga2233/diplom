@@ -3,6 +3,7 @@ pipeline {
     parameters {
         choice(name: 'Terraform', choices: ['apply', 'destroy'], description: '')
         choice(name: 'Ansible', choices: ['apply', 'skip'], description: '')
+        booleanParam(name: 'Ansible_wait', defaultValue: true, description: '')
     }
     
 
@@ -39,6 +40,10 @@ pipeline {
             }
         }
         stage('Wait 60 sec') {
+            when {
+                // Only say hello if a "greeting" is requested
+                expression { params.Ansible_wait == true }
+            }
             steps {
                 sh 'sleep 1m'
             }

@@ -39,17 +39,17 @@
        state: latest
        update_cache: yes
 
-  - name: Install virtualenv
-    pip: 
-       name: virtualenv
+  #- name: Install virtualenv
+  #  pip: 
+  #     name: virtualenv
     
 
-  - name: Create virtualenv for project
-    shell: virtualenv "{{ PROJECT_HOME }}/venv"
+  #- name: Create virtualenv for project
+  #  shell: virtualenv "{{ PROJECT_HOME }}/venv"
            creates="{{ PROJECT_HOME }}/venv/bin/activate"
 
   - name: Install Flask in the virtualenv
-    pip: name=flask virtualenv="{{ PROJECT_HOME }}/venv" # virtualenv_site_packages=yes
+    pip: name=flask #virtualenv="{{ PROJECT_HOME }}/venv" # virtualenv_site_packages=yes
 
   #- name: Get process id running the webserver
   #  shell: lsof -t -i:{{PORT}}    
@@ -61,8 +61,10 @@
   #  when: pid.stdout != ""
 
 
-  - name: Launch flask website via virtualenv
-    shell: "source {{ PROJECT_HOME }}/venv/bin/activate; nohup python {{PROJECT_HOME}}/{{MAIN_PY}} {{PORT}} 2>&1 >/dev/null &"
+ # - name: Launch flask website via virtualenv
+ #   shell: "source {{ PROJECT_HOME }}/venv/bin/activate; nohup python {{PROJECT_HOME}}/{{MAIN_PY}} {{PORT}} 2>&1 >/dev/null &"
+  - name: Launch flask
+    shell: "python3 {{PROJECT_HOME}}/{{MAIN_PY}} {{PORT}} 2>&1 >/dev/null &" 
 
   - name: Wait for website port to become available
     wait_for: port={{PORT}} delay=1
