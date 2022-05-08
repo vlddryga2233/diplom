@@ -5,7 +5,7 @@
     LOCAL_PROJECT_HOME: "./app"
     PROJECT_HOME: "/app"
     MAIN_PY: "app.py"
-    PORT: 80
+
 
   tasks:
 
@@ -68,7 +68,5 @@
  # - name: Launch flask website via virtualenv
  #   shell: "source {{ PROJECT_HOME }}/venv/bin/activate; nohup python {{PROJECT_HOME}}/{{MAIN_PY}} {{PORT}} 2>&1 >/dev/null &"
   - name: Launch flask
-    shell: "python3 {{PROJECT_HOME}}/{{MAIN_PY}} {{PORT}} 2>&1 >/dev/null &" 
+    shell: "python3 {{PROJECT_HOME}}/{{MAIN_PY}}  2>&1 >/dev/null &" 
 
-  - name: Wait for website port to become available
-    wait_for: port={{PORT}} delay=1
