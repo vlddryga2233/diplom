@@ -49,8 +49,10 @@ pipeline {
                 expression { params.Ansible == 'apply' }
             }
             steps {
-                dir("${env.WORKSPACE}/ansible")
-                sh 'ansible-playbook main.yml'
+                dir("${env.WORKSPACE}/ansible"){
+                    sh 'ansible-playbook main.yml'
+                }
+                
             }
         }
     }
